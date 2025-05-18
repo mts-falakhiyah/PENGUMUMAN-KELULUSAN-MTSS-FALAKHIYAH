@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Kelulusan MTs Falakhiyah</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        
+        .identity {
+            background-color: #e67e22;
+            color: white;
+            padding: 10px;
+            font-size: 0.9em;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .search-box {
+            background-color: white;
+            padding: 25px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        input[type="text"] {
+            padding: 12px;
+            width: 70%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2ecc71;
+        }
+        
+        .result {
+            display: none;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        .graduate {
+            font-size: 1.4em;
+            color: #27ae60;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .not-pass {
+            color: #e74c3c;
+        }
+        
+        footer {
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.85em;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+        }
+        
+        @media (max-width: 600px) {
+            input[type="text"] {
+                width: 100%;
+            }
+            
+            button {
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .subtitle {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://via.placeholder.com/80" alt="Logo MTs Falakhiyah" class="logo">
+            <h1>YAYASAN PENDIDIKAN ISLAM FALAKHIYAH<br>(YASPIFA)</h1>
+            <p class="subtitle">MADRASAH TSANAWIYAH FALAKHIYAH</p>
+            <div class="identity">
+                NSM: 121235220029 | NPSN: 20582626 | TERAKREDITASI B<br>
+                DESA JAMPET KEC. NGASEM KAB. BOJONEGORO
+            </div>
+        </header>
+        
+        <div class="search-box">
+            <h2>PENGUMUMAN KELULUSAN</h2>
+            <p>Tahun Pelajaran 2023/2024</p>
+            <p>Masukkan NIS atau Nama Siswa:</p>
+            <input type="text" id="searchInput" placeholder="Contoh: 0091825672 atau Afif Sahrul Muta'al">
+            <button onclick="checkGraduation()">CEK KELULUSAN</button>
+        </div>
+        
+        <div id="result" class="result">
+            <div id="resultContent"></div>
+        </div>
+        
+        <footer>
+            <p>© 2024 MTs Falakhiyah - Yayasan Pendidikan Islam Falakhiyah (YASPIFA)</p>
+            <p>Alamat: Desa Jampet, Kec. Ngasem, Kab. Bojonegoro | Telp: (0353) 8XXXXX</p>
+        </footer>
+    </div>
+
+    <script>
+        // Data siswa MTs Falakhiyah
+        const graduates = [
+            { nis: "0091825672", name: "Afif Sahrul Muta'al", status: "LULUS", nilai: "85.5", wali: "Munawar" },
+            { nis: "3098317920", name: "Abadil Hasan", status: "LULUS", nilai: "88.2", wali: "Siran" },
+            { nis: "3095903686", name: "Adzima Nur Nabila Putri", status: "LULUS", nilai: "90.1", wali: "Muh. Siswanto" },
+            { nis: "3109313796", name: "Agong Arto Mulyo", status: "LULUS", nilai: "87.8", wali: "Suyono" },
+            { nis: "0101795542", name: "Agus Adi Saputera", status: "LULUS", nilai: "86.3", wali: "Sutrisno" },
+            { nis: "3096320225", name: "Ahmad Rizal Rohmadoni", status: "LULUS", nilai: "89.7", wali: "Wilis (Alm)" },
+            { nis: "3092429723", name: "Aiszatul Af Karina", status: "LULUS", nilai: "91.2", wali: "Kasbi" },
+            { nis: "3107628134", name: "Annisa Annur", status: "LULUS", nilai: "88.9", wali: "Kirno" },
+            { nis: "3100933554", name: "Bayu Febrian Ade Nugroho", status: "LULUS", nilai: "85.0", wali: "Kusaeni" },
+            { nis: "3099358274", name: "Bunga Aera Indah Juwita", status: "LULUS", nilai: "90.5", wali: "Tarmidi" },
+            { nis: "3092087165", name: "Faldan Muhamad Arafat Al-Mubaroq", status: "LULUS", nilai: "92.0", wali: "Yasmin" },
+            { nis: "3099481304", name: "Ikhsan Sirojuttholibin", status: "LULUS", nilai: "87.5", wali: "Moh. Syamsul Hadi" },
+            { nis: "3096526123", name: "Isy'af Salwa Baihaqi", status: "LULUS", nilai: "88.8", wali: "Sutikno" },
+            { nis: "3097006709", name: "M. Khoirul Anam", status: "LULUS", nilai: "86.7", wali: "M. Imam Zubaidi" },
+            { nis: "0107147430", name: "M. Ufin Nawawi", status: "LULUS", nilai: "84.9", wali: "Jono" },
+            { nis: "3093989798", name: "Mohamad Wiji Syahroni", status: "LULUS", nilai: "89.3", wali: "Sumarno" },
+            { nis: "3103493179", name: "M. Wildan Risky Mubarok", status: "LULUS", nilai: "87.1", wali: "Nadi" },
+            { nis: "0103104273", name: "Maulana Isza - Al", status: "LULUS", nilai: "90.0", wali: "Muhammad Khoirul Hanam" },
+            { nis: "3096501223", name: "Mirnanda Nur Hidayah", status: "LULUS", nilai: "91.8", wali: "Yanto" },
+            { nis: "3100533674", name: "Misbah Syahrul Muhtarom", status: "LULUS", nilai: "88.4", wali: "Basuni Sugiarto" },
+            { nis: "0112525194", name: "Mochamad Mas Dedi", status: "LULUS", nilai: "85.6", wali: "Sunardi" },
+            { nis: "3101318161", name: "Muhammad Riko", status: "LULUS", nilai: "87.3", wali: "Sadin" },
+            { nis: "3097151428", name: "Novi Ana Laili", status: "LULUS", nilai: "89.9", wali: "Parji Al Anwar" },
+            { nis: "0094616255", name: "Nuri Widianingsih", status: "LULUS", nilai: "90.7", wali: "Teguh" },
+            { nis: "3098533144", name: "Putri Wulandari", status: "LULUS", nilai: "92.5", wali: "Pasir" },
+            { nis: "0108126830", name: "Rifki Sudarmanto", status: "LULUS", nilai: "86.9", wali: "Solikin" },
+            { nis: "0102630310", name: "Rismala", status: "LULUS", nilai: "88.0", wali: "Ngari" },
+            { nis: "0106042333", name: "Rofiana Indri Syafarani", status: "LULUS", nilai: "89.1", wali: "Utomo" },
+            { nis: "3081911709", name: "Sigit Saputra", status: "LULUS", nilai: "87.7", wali: "Jadi" },
+            { nis: "3090615772", name: "Sirri Rahmani Tri Hapsari", status: "LULUS", nilai: "91.0", wali: "A. Ikhsan" },
+            { nis: "0108181667", name: "Pratama", status: "LULUS", nilai: "85.8", wali: "Srihadi" },
+            { nis: "0103719351", name: "Mutiara Risky Olivia Putri", status: "LULUS", nilai: "90.3", wali: "Muhsin" },
+            { nis: "0084055836", name: "Ilham Danuarta", status: "LULUS", nilai: "88.6", wali: "Hadi Riyanto" }
+        ];
+        
+        function checkGraduation() {
+            const input = document.getElementById('searchInput').value.trim();
+            const resultDiv = document.getElementById('result');
+            const resultContent = document.getElementById('resultContent');
+            
+            if (!input) {
+                alert("Silakan masukkan NIS atau Nama terlebih dahulu!");
+                return;
+            }
+            
+            // Cari siswa
+            const student = graduates.find(s => 
+                s.nis === input || s.name.toLowerCase().includes(input.toLowerCase())
+            );
+            
+            if (student) {
+                resultContent.innerHTML = `
+                    <div class="graduate">السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</div>
+                    <div class="graduate">SELAMAT! ANDA LULUS</div>
+                    <p><strong>Nama Lengkap:</strong> ${student.name}</p>
+                    <p><strong>Nomor Induk Siswa (NIS):</strong> ${student.nis}</p>
+                    <p><strong>Nama Wali:</strong> ${student.wali}</p>
+                    <p><strong>Nilai Akhir:</strong> ${student.nilai}</p>
+                    <p style="text-align: center; font-style: italic; margin-top: 20px;">
+                        "Atas kelulusan ini, kami ucapkan Alhamdulillah. Semoga menjadi generasi yang sholeh/sholehah dan bermanfaat bagi umat."
+                    </p>
+                `;
+            } else {
+                resultContent.innerHTML = `
+                    <div class="graduate not-pass">DATA TIDAK DITEMUKAN</div>
+                    <p style="text-align: center;">NIS/Nama yang Anda masukkan tidak terdaftar sebagai siswa kelas IX MTs Falakhiyah Tahun Pelajaran 2023/2024.</p>
+                    <p style="text-align: center;">Silakan periksa kembali atau hubungi panitia kelulusan.</p>
+                `;
+            }
+            
+            resultDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
