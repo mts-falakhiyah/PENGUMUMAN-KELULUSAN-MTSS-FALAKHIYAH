@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelulusan MTs Falakhiyah Tahun 2024</title>
+    <title>Kelulusan MTs Falakhiyah Tahun Ajaran 2025</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -133,9 +133,9 @@
 <body>
     <div class="container">
         <header>
-            <h1>KELULUSAN SISWA</h1>
+            <h1>PENGUMUMAN KELULUSAN SISWA</h1>
             <p>MADRASAH TSANAWIYAH FALAKHIYAH</p>
-            <p>TAHUN PELAJARAN 2023/2024</p>
+            <p>TAHUN PELAJARAN 2024/2025</p>
         </header>
 
         <div class="school-info">
@@ -435,8 +435,8 @@
         <!-- Tambahkan bagian untuk siswa lainnya dengan format yang sama -->
 
         <footer>
-            <p>© 2024 MTs Falakhiyah - Jl. Raya Ngasem No. 154 Jampet Kec. Ngasem Kab. Bojonegoro</p>
-            <p>Website Kelulusan Resmi MTs Falakhiyah Tahun Pelajaran 2023/2024</p>
+            <p>© 2025 MTs Falakhiyah Jampet- Jl. Raya Ngasem No. 154 Jampet Kec. Ngasem Kab. Bojonegoro</p>
+            <p>Website Kelulusan Resmi MTs Falakhiyah Tahun Pelajaran 2024/2025</p>
         </footer>
     </div>
 
